@@ -12,6 +12,8 @@ import Parse
 
 class HomeViewController: UIViewController {
 
+        var user = PFUser.currentUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,19 +31,14 @@ class HomeViewController: UIViewController {
                 
                 let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
                 self.presentViewController(viewController, animated: true, completion: nil)
+                
+                print("\(self.user)")
             })
         }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+   
     }
-    */
 
-}
+

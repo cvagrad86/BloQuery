@@ -28,7 +28,7 @@ class AddQuestionsViewController: UIViewController {
     
     @IBAction func addQuestion(sender: UIButton) {
     
-    var newQuestion = PFObject(className:"Questions")
+    let newQuestion = PFObject(className:"Questions")
    
     newQuestion["question"] = userQuestion.text
     
@@ -36,12 +36,15 @@ class AddQuestionsViewController: UIViewController {
     (success: Bool, error: NSError?) -> Void in
     if (success) {
     // The object has been saved.
-        print("Quesiton saved")
+        print("Question saved")
+        NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
+        
     } else {
     // There was a problem, check error.description
         print("something went wrong")
     }
     }
+        
     
         }
 }

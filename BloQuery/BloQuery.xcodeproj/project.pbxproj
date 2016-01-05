@@ -36,6 +36,8 @@
 		93148ECF1C39842000EAAEBD /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ECE1C39842000EAAEBD /* AddQuestionsViewController.swift */; };
 		93148ED41C3BDAC500EAAEBD /* QuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED31C3BDAC500EAAEBD /* QuestionsTableViewController.swift */; };
 		93148ED61C3BDB2A00EAAEBD /* questionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED51C3BDB2A00EAAEBD /* questionsTableViewCell.swift */; };
+		93148ED81C3BF72000EAAEBD /* userProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */; };
+		93148EDA1C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		93148ECE1C39842000EAAEBD /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuestionsViewController.swift; sourceTree = "<group>"; };
 		93148ED31C3BDAC500EAAEBD /* QuestionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewController.swift; sourceTree = "<group>"; };
 		93148ED51C3BDB2A00EAAEBD /* questionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questionsTableViewCell.swift; sourceTree = "<group>"; };
+		93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfileViewController.swift; sourceTree = "<group>"; };
+		93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 				93148ECA1C392EF800EAAEBD /* ResetPWViewController.swift */,
 				93148ECE1C39842000EAAEBD /* AddQuestionsViewController.swift */,
 				93148ED31C3BDAC500EAAEBD /* QuestionsTableViewController.swift */,
+				93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */,
+				93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -364,8 +370,10 @@
 			files = (
 				93148EC91C392DD800EAAEBD /* HomeViewController.swift in Sources */,
 				93148ED41C3BDAC500EAAEBD /* QuestionsTableViewController.swift in Sources */,
+				93148EDA1C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift in Sources */,
 				93148ECF1C39842000EAAEBD /* AddQuestionsViewController.swift in Sources */,
 				93148EC51C392DA400EAAEBD /* LoginViewController.swift in Sources */,
+				93148ED81C3BF72000EAAEBD /* userProfileViewController.swift in Sources */,
 				93148EC71C392DB600EAAEBD /* NewUserViewController.swift in Sources */,
 				93148ED61C3BDB2A00EAAEBD /* questionsTableViewCell.swift in Sources */,
 				93148E751C39299100EAAEBD /* AppDelegate.swift in Sources */,
