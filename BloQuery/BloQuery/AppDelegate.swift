@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios/guide#local-datastore
-        Parse.enableLocalDatastore()
+        //Parse.enableLocalDatastore()
         
         // Initialize Parse.
         Parse.setApplicationId("QFVbeAr1LDBZVlmK7U1oefVe2cSDMVSUdYs3ceBl",
