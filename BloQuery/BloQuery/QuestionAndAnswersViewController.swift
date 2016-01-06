@@ -30,6 +30,32 @@ class QuestionAndAnswersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addNotes(sender: UIButton) {
+        
+        var inputTextField: UITextField?
+        
+        let alertController = UIAlertController(title: "Answer Please", message: "Be Smart, Clear and Concise", preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "Post", style: .Default, handler: { (action) -> Void in
+            // Do whatever you want with inputTextField?.text
+            print("\(inputTextField?.text)")
+            //self.placeNotes.text = inputTextField?.text
+            
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in }
+        
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            inputTextField = textField
+        }
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+
+    
+    
 
     /*
     // MARK: - Navigation

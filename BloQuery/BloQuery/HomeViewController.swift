@@ -11,12 +11,20 @@ import Parse
 
 
 class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var profilePhoto: UIImageView!
 
         var user = PFUser.currentUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.size.width / 2;
+        self.profilePhoto.layer.cornerRadius = 10.0
+        self.profilePhoto.clipsToBounds = true
+        self.profilePhoto.layer.borderWidth = 3.0
+        //self.profilePhoto.layer.borderColor = [UIColor whiteColor].CGColor;
 
+        
         // Do any additional setup after loading the view.
     }
 
