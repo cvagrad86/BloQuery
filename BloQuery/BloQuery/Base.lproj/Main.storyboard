@@ -73,7 +73,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-OL-mq5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3u-OL-mq5">
                                         <rect key="frame" x="20" y="311" width="79" height="27"/>
                                         <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="13"/>
                                         <state key="normal" title="Save Changes">
@@ -179,7 +179,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="5dC-Pc-XNC" firstAttribute="centerX" secondItem="D35-Jl-1UK" secondAttribute="centerX" id="T83-mS-Onk"/>
@@ -670,7 +670,7 @@
         <image name="profileX1" width="202" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QcT-VL-Yfu"/>
+        <segue reference="Ldl-GQ-dCx"/>
         <segue reference="bYg-Oe-dK6"/>
     </inferredMetricsTieBreakers>
 </document>

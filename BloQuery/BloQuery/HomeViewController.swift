@@ -22,8 +22,7 @@ class HomeViewController: UIViewController {
         self.profilePhoto.layer.cornerRadius = 10.0
         self.profilePhoto.clipsToBounds = true
         self.profilePhoto.layer.borderWidth = 3.0
-        //self.profilePhoto.layer.borderColor = [UIColor whiteColor].CGColor;
-
+        self.profilePhoto.layer.borderColor = UIColor.blackColor().CGColor
         
         // Do any additional setup after loading the view.
     }
