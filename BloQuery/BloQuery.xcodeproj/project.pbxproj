@@ -38,6 +38,8 @@
 		93148ED61C3BDB2A00EAAEBD /* questionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED51C3BDB2A00EAAEBD /* questionsTableViewCell.swift */; };
 		93148ED81C3BF72000EAAEBD /* userProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */; };
 		93148EDA1C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */; };
+		933CFE671C3E99530057240C /* QuestionsandAnswerPFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CFE661C3E99530057240C /* QuestionsandAnswerPFViewController.swift */; };
+		933CFE691C3EBC8D0057240C /* answersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CFE681C3EBC8D0057240C /* answersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		93148ED51C3BDB2A00EAAEBD /* questionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = questionsTableViewCell.swift; sourceTree = "<group>"; };
 		93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userProfileViewController.swift; sourceTree = "<group>"; };
 		93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswersViewController.swift; sourceTree = "<group>"; };
+		933CFE661C3E99530057240C /* QuestionsandAnswerPFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsandAnswerPFViewController.swift; sourceTree = "<group>"; };
+		933CFE681C3EBC8D0057240C /* answersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = answersTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +229,7 @@
 				93148ED31C3BDAC500EAAEBD /* QuestionsTableViewController.swift */,
 				93148ED71C3BF72000EAAEBD /* userProfileViewController.swift */,
 				93148ED91C3C2EA000EAAEBD /* QuestionAndAnswersViewController.swift */,
+				933CFE661C3E99530057240C /* QuestionsandAnswerPFViewController.swift */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				93148ED51C3BDB2A00EAAEBD /* questionsTableViewCell.swift */,
+				933CFE681C3EBC8D0057240C /* answersTableViewCell.swift */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -374,10 +380,12 @@
 				93148ECF1C39842000EAAEBD /* AddQuestionsViewController.swift in Sources */,
 				93148EC51C392DA400EAAEBD /* LoginViewController.swift in Sources */,
 				93148ED81C3BF72000EAAEBD /* userProfileViewController.swift in Sources */,
+				933CFE671C3E99530057240C /* QuestionsandAnswerPFViewController.swift in Sources */,
 				93148EC71C392DB600EAAEBD /* NewUserViewController.swift in Sources */,
 				93148ED61C3BDB2A00EAAEBD /* questionsTableViewCell.swift in Sources */,
 				93148E751C39299100EAAEBD /* AppDelegate.swift in Sources */,
 				93148ECB1C392EF800EAAEBD /* ResetPWViewController.swift in Sources */,
+				933CFE691C3EBC8D0057240C /* answersTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +620,7 @@
 				93148E9B1C39299200EAAEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93148E9C1C39299200EAAEBD /* Build configuration list for PBXNativeTarget "BloQueryTests" */ = {
 			isa = XCConfigurationList;
@@ -620,6 +629,7 @@
 				93148E9E1C39299200EAAEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93148E9F1C39299200EAAEBD /* Build configuration list for PBXNativeTarget "BloQueryUITests" */ = {
 			isa = XCConfigurationList;
@@ -628,6 +638,7 @@
 				93148EA11C39299200EAAEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

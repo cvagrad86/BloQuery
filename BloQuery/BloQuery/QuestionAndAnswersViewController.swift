@@ -40,6 +40,12 @@ class QuestionAndAnswersViewController: UIViewController {
             print("\(inputTextField?.text)")
             //self.placeNotes.text = inputTextField?.text
             
+            let newAnswer:PFObject = PFObject();
+            
+            //newAnswer.answers = inputTextField?.text
+            
+            newAnswer.saveInBackground()
+            
         })
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in }
         

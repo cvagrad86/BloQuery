@@ -29,14 +29,17 @@ class AddQuestionsViewController: UIViewController {
     @IBAction func addQuestion(sender: UIButton) {
     
     let newQuestion = PFObject(className:"Questions")
-   
+   //let questionAuthor = PFObject(className: "Questions", dictionary: [String : "userEyeD]?)
     newQuestion["question"] = userQuestion.text
-    
+    newQuestion["userEyeD"] = PFUser.currentUser()
+
+
     newQuestion.saveInBackgroundWithBlock {
     (success: Bool, error: NSError?) -> Void in
     if (success) {
     // The object has been saved.
         print("Question saved")
+        //print("\(userEyeD)")
         NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
         
     } else {

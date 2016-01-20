@@ -44,6 +44,15 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func signOut(sender: AnyObject) {
+        
+        PFUser.logOut()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("Login") as UIViewController
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
 
    
     }

@@ -48,53 +48,9 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
         return query
 
     }
-    /*
-    @IBAction func takePhotos(sender: UIButton) {
-        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-            let picker = UIImagePickerController()
-            //picker.delegate =
-            picker.allowsEditing = false
-            picker.sourceType = UIImagePickerControllerSourceType.Camera
-            picker.cameraCaptureMode = .Photo
-            picker.modalPresentationStyle = .FullScreen
-            presentViewController(picker,
-                animated: true,
-                completion: nil)
-        } else {
-            noCamera()
-        }
-        
-    }
-*/
-    
-   
-    /*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            myImageView.contentMode = .ScaleAspectFit
-            myImageView.image = pickedImage
-        }
-        
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     
-    func noCamera(){
-        let alertVC = UIAlertController(
-            title: "No Camera",
-            message: "Sorry, this device has no camera",
-            preferredStyle: .Alert)
-        let okAction = UIAlertAction(
-            title: "OK",
-            style:.Default,
-            handler: nil)
-        alertVC.addAction(okAction)
-        presentViewController(
-            alertVC,
-            animated: true,
-            completion: nil)
-    }
-    */
+   
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             myImageView.contentMode = .ScaleAspectFit
@@ -108,14 +64,28 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
+    @IBAction func saveProfile(sender: AnyObject) {
+        var image = myImageView.image
+        let imageData = UIImagePNGRepresentation(image!)
+        let imageFile = PFFile(name:"image.png", data:imageData!)
+        
+        var userPhoto = PFObject(className:"profilePicture")
+        userPhoto.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            
+            if (success) {
+                // The object has been saved.
+                print("Photo saved")
+                NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
+                
+            } else {
+                // There was a problem, check error.description
+                print("something went wrong")
+            }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    }
+    
 
 }
+
