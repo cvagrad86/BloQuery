@@ -22,7 +22,7 @@ class QuestionsTableViewController: PFQueryTableViewController {
         query.includeKey("userEyeD")
         query.cachePolicy = .CacheThenNetwork
         query.orderByDescending("createdAt")
-        //print("\(userEyeD)")
+        //print("\(ObjectIdentifier)().self")
         return query
         
     }
@@ -38,7 +38,8 @@ class QuestionsTableViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("questionsCell", forIndexPath: indexPath) as! questionsTableViewCell
         cell.questionLabel.text = object?.objectForKey("question") as? String
-        cell.userdetailsLabel.text = object?.objectForKey("userEyeD") as? String
+        cell.userdetailsLabel.text = object?.objectForKey("username") as? String
+        
         return cell
     }
     
@@ -64,7 +65,7 @@ class QuestionsTableViewController: PFQueryTableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    /*
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let nav = segue.destinationViewController as! UINavigationController
@@ -72,17 +73,17 @@ class QuestionsTableViewController: PFQueryTableViewController {
         
         if segue.identifier == "showQuestion" {
             
-            let indexPath = self.tableView.indexPathForSelectedRow() {
-                let row = Int(indexPath.row)
-                controller.currentObject = (objects?[row] as! PFObject)
-            }
+            let indexPath = tableView.indexPathForSelectedRow
+                //let row = Int(indexPath.row)
+                controller.currentObject = self.objects![indexPath!.row]
+        }
             //let questionAsked = [indexPath?.row] as! String
             //controller.question = questionAsked
             //let placeLat = places[indexPath!.row].latitude
             //controller.placeSelected = placeSelected
         }
-    }
-    */
+    
+
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("showQuestion", sender: self)

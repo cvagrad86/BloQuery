@@ -14,9 +14,12 @@ class AddQuestionsViewController: UIViewController {
 
     @IBOutlet weak var userQuestion: UITextField!
     
+    let ericsSpecialNotificationKey = "com.ericchamberlin.letsski"
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -40,7 +43,8 @@ class AddQuestionsViewController: UIViewController {
     // The object has been saved.
         print("Question saved")
         //print("\(userEyeD)")
-        NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
+        //NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(self.ericsSpecialNotificationKey, object: self)
         
     } else {
     // There was a problem, check error.description

@@ -86,6 +86,28 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     }
     
+    
+    /*
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      
+    
+    let nav = segue.destinationViewController as! UINavigationController
+    let controller = nav.topViewController as! HomeViewController
+    
+    if segue.identifier == "updateProfile" {
+    
+    let newPhoto   = myImageView.image
+    //let row = Int(indexPath.row)
+    controller.profilePhoto = myImageView.image as? UIImageView
+    }
+    //let questionAsked = [indexPath?.row] as! String
+    //controller.question = questionAsked
+    //let placeLat = places[indexPath!.row].latitude
+    //controller.placeSelected = placeSelected
+}
+*/
+
 
 }
+
 

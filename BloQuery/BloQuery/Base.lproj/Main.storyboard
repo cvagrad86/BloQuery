@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -302,7 +304,7 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="vNr-LL-2ck"/>
                         <barButtonItem key="leftBarButtonItem" title="??" id="4jy-jt-qQa">
                             <connections>
-                                <segue destination="Q0y-KO-Oiq" kind="show" id="BYc-E0-JK7"/>
+                                <segue destination="Q0y-KO-Oiq" kind="show" identifier="showQuestion" id="SPG-kd-RDL"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Home" id="9BB-tY-hXE">
@@ -339,7 +341,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R4n-qy-1py">
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R4n-qy-1py">
                             <rect key="frame" x="0.0" y="64" width="414" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.74111220205188055" green="1" blue="0.9306714074690603" alpha="1" colorSpace="calibratedRGB"/>
@@ -361,36 +363,43 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="votes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kX4-H5-5JG" userLabel="votes label">
-                                            <rect key="frame" x="8" y="60" width="42" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="KML-fe-kiw"/>
-                                            </constraints>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftz-5L-FTJ">
+                                            <rect key="frame" x="379" y="54" width="27" height="27"/>
+                                            <state key="normal" title="Button" image="checked"/>
+                                            <connections>
+                                                <action selector="upvoteButton:" destination="USh-eB-agd" eventType="touchUpInside" id="oY4-UI-ljr"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bK3-9w-b5W" userLabel="votes label">
+                                            <rect key="frame" x="100" y="60" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftz-5L-FTJ">
-                                            <rect key="frame" x="379" y="54" width="27" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="votes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kX4-H5-5JG" userLabel="votes label">
+                                            <rect key="frame" x="235" y="57" width="135" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="27" id="ASs-3p-KnT"/>
+                                                <constraint firstAttribute="width" constant="135" id="IZn-3D-Q3r"/>
                                             </constraints>
-                                            <state key="normal" title="Button" image="checked"/>
-                                            <connections>
-                                                <action selector="upvoteButton:" destination="Uiz-Nv-5bP" eventType="touchUpInside" id="aSL-yv-5Rg"/>
-                                            </connections>
-                                        </button>
+                                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="top" secondItem="Efd-Oz-QXl" secondAttribute="topMargin" constant="46" id="QV2-pu-2S6"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="k6C-c4-Ohe" secondAttribute="trailing" constant="36" id="STh-bh-0YG"/>
-                                        <constraint firstItem="k6C-c4-Ohe" firstAttribute="top" secondItem="Efd-Oz-QXl" secondAttribute="topMargin" constant="-13" id="VPm-Re-8O5"/>
-                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="leading" secondItem="Efd-Oz-QXl" secondAttribute="leadingMargin" id="bRl-1d-u7b"/>
-                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="leading" secondItem="k6C-c4-Ohe" secondAttribute="leading" id="hgX-MV-ubx"/>
-                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="trailing" secondItem="Efd-Oz-QXl" secondAttribute="trailingMargin" id="iVu-1L-1Cy"/>
-                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="bottom" secondItem="Ftz-5L-FTJ" secondAttribute="bottom" id="nY6-Ve-SRK"/>
-                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="bottom" secondItem="Efd-Oz-QXl" secondAttribute="bottomMargin" id="s3U-HY-krD"/>
-                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="top" secondItem="k6C-c4-Ohe" secondAttribute="bottom" constant="22" id="zXQ-Tk-PHV"/>
+                                        <constraint firstItem="k6C-c4-Ohe" firstAttribute="leading" secondItem="Efd-Oz-QXl" secondAttribute="leadingMargin" id="1kz-ox-Ezj"/>
+                                        <constraint firstItem="k6C-c4-Ohe" firstAttribute="top" secondItem="Efd-Oz-QXl" secondAttribute="topMargin" constant="-13" id="3yE-1L-SKV"/>
+                                        <constraint firstItem="bK3-9w-b5W" firstAttribute="leading" secondItem="Efd-Oz-QXl" secondAttribute="leadingMargin" constant="92" id="5Be-gS-4RF"/>
+                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="trailing" secondItem="Efd-Oz-QXl" secondAttribute="trailingMargin" id="5ke-kQ-KTj"/>
+                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="bottom" secondItem="Efd-Oz-QXl" secondAttribute="bottomMargin" id="D8z-cc-jLX"/>
+                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="centerY" secondItem="kX4-H5-5JG" secondAttribute="centerY" id="P5A-CW-dZP"/>
+                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="top" secondItem="k6C-c4-Ohe" secondAttribute="bottom" constant="19" id="XfA-o7-TCn"/>
+                                        <constraint firstItem="bK3-9w-b5W" firstAttribute="top" secondItem="Efd-Oz-QXl" secondAttribute="topMargin" constant="52" id="dxT-NC-1oF"/>
+                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="leading" secondItem="kX4-H5-5JG" secondAttribute="trailing" constant="9" id="jGS-hK-yX3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="k6C-c4-Ohe" secondAttribute="trailing" constant="36" id="jq3-hl-v5k"/>
+                                        <constraint firstItem="Ftz-5L-FTJ" firstAttribute="top" secondItem="Efd-Oz-QXl" secondAttribute="topMargin" constant="46" id="mKP-yg-be6"/>
+                                        <constraint firstItem="k6C-c4-Ohe" firstAttribute="trailing" secondItem="kX4-H5-5JG" secondAttribute="trailing" id="mwm-ww-z2T"/>
+                                        <constraint firstItem="kX4-H5-5JG" firstAttribute="baseline" secondItem="bK3-9w-b5W" secondAttribute="firstBaseline" id="zLW-2A-PVc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -404,6 +413,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="MzP-Ov-0yZ">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="lG5-R6-7NY">
                             <connections>
                                 <segue destination="LH0-7y-EeY" kind="show" id="IJe-hS-FO9"/>
@@ -787,9 +797,9 @@
         <image name="profileX1" width="202" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gAB-BN-Bnl"/>
+        <segue reference="5DJ-z0-kC7"/>
+        <segue reference="Ldl-GQ-dCx"/>
+        <segue reference="bYg-Oe-dK6"/>
         <segue reference="IJe-hS-FO9"/>
-        <segue reference="BYc-E0-JK7"/>
-        <segue reference="Ob1-Ok-PvJ"/>
     </inferredMetricsTieBreakers>
 </document>
