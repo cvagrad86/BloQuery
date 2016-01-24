@@ -38,8 +38,7 @@ class QuestionsTableViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("questionsCell", forIndexPath: indexPath) as! questionsTableViewCell
         cell.questionLabel.text = object?.objectForKey("question") as? String
-        cell.userdetailsLabel.text = object?.objectForKey("username") as? String
-        
+        cell.userdetailsLabel.text = PFUser.currentUser()!.username        
         return cell
     }
     

@@ -19,7 +19,6 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func loadImageButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
-        
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
@@ -28,11 +27,10 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.userName.text =
         print("\(user)")
         imagePicker.delegate = self
-        
-        // Do any additional setup after loading the view.
+        userName.text = PFUser.currentUser()!.username
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,8 +41,7 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     func queryForTable(object: PFObject?) -> PFQuery {
         let query = PFQuery(className: "User")
         query.cachePolicy = .CacheElseNetwork
-        userName.text = object?.objectForKey("username") as? String
-        print("/(username)")
+                print("/(username)")
         return query
 
     }
@@ -65,25 +62,39 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func saveProfile(sender: AnyObject) {
-        var image = myImageView.image
-        let imageData = UIImagePNGRepresentation(image!)
-        let imageFile = PFFile(name:"image.png", data:imageData!)
         
-        var userPhoto = PFObject(className:"profilePicture")
-        userPhoto.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
+        if myImageView.image == nil {
+            print("Image not uploaded")
+        }else {
             
-            if (success) {
-                // The object has been saved.
-                print("Photo saved")
-                NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
+            let newUserPhoto = PFObject(className: "User")
+            newUserPhoto["uploader"] = PFUser.currentUser()
+            newUserPhoto.saveInBackgroundWithBlock({
+                (success: Bool, error: NSError?) -> Void in
                 
-            } else {
-                // There was a problem, check error.description
-                print("something went wrong")
-            }
+                if error == nil {
+                
+                    let imageData = UIImagePNGRepresentation(self.myImageView.image!)
+                    let parseImageFile = PFFile(name: "uploaded_image.png", data: imageData!)
+                    newUserPhoto["profilePicture"] = parseImageFile
+                    newUserPhoto.saveInBackgroundWithBlock({
+                        (success: Bool, error: NSError?) -> Void in
+                        
+                        if error == nil {
+                            print("data uploaded")
+                        }else {
+                            print(error)
+                        }
+                    })
+                }else {
+                    print(error)
+                    
+                }
+                
+            })
 
-    }
+        }
+        
     }
     
     
