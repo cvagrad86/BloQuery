@@ -47,18 +47,6 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
             super.didReceiveMemoryWarning()
             
         }
-    
-    
-    /*
-    func queryForUsers() -> PFQuery {
-        let query = PFQuery(className:"Question")
-        query.whereKey("question", equalTo: currentObject!)
-        query.cachePolicy = .CacheThenNetwork
-        query.orderByDescending("createdAt")
-        return query
-        
-    }
-*/
 
     
     func queryForAnswers() -> PFQuery {
@@ -73,31 +61,6 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
 
     }
     
-   
-    
-    /*
-    func queryForAnswers() -> PFQuery {
-    let query = PFQuery(className: "Comment")
-    query.whereKey("post", equalTo: myPost)
-    query.findObjectsInBackgroundWithBlock {
-    (comments: [PFObject]?, error: NSError?) -> Void in
-    // comments now contains the comments for myPost
-    }
-    
-    // Using NSPredicate
-    let predicate = NSPredicate(format: "post = %@", myPost)
-    let query = PFQuery(className: "Comment", predicate: predicate)
-    
-    query.findObjectsInBackgroundWithBlock {
-    (comments: [PFObject]?, error: NSError?) -> Void in
-    // comments now contains the comments for myPost
-    }
-    
-    */
-    
-    //func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-      //
-    //}
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("answersCell", forIndexPath: indexPath) as! answersTableViewCell
@@ -108,7 +71,9 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
     }
     
     
-
+/*
+    this was attempt to use segmented controller to sort table view
+    
     @IBAction func sortAnswers(sender: UISegmentedControl) {
         
         if controller.selectedSegmentIndex == 0 {
@@ -120,6 +85,7 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
         }
     }
     
+*/
     
     @IBAction func answerButton(sender: AnyObject) {
         

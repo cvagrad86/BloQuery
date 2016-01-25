@@ -25,6 +25,7 @@ class answersTableViewCell: PFTableViewCell {
     override func awakeFromNib() {
         if let object = currentAnswer {
             answersLabel.text = (object["Answer"] as! String)
+            // donesnt work - answersLabel.text = object.objectForKey("answer") as? String
         }
     }
         
