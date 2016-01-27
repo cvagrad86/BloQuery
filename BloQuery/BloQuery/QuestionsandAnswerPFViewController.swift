@@ -16,19 +16,19 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
     @IBOutlet weak var controller: UISegmentedControl!
     @IBOutlet weak var currentQuestionLabel: UILabel!
 
-    let ericsSpecialNotificationKey = "com.ericchamberlin.letsski"
+    //let ericsSpecialNotificationKey = "com.ericchamberlin.letsski"
 
-    var parseObject : PFObject?
+    var connectedAnswers : PFObject?
     var currentObject : PFObject?
     var votes = 0
-    //var voteButton = UIButton!.self
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
             if let object = currentObject {
                 currentQuestionLabel.text = (object["question"] as! String)
             }
-          NSNotificationCenter.defaultCenter().addObserver(self, selector: "newVoteForAnswer", name: ericsSpecialNotificationKey, object: nil)
+            
+          //NSNotificationCenter.defaultCenter().addObserver(self, selector: "newVoteForAnswer", name: ericsSpecialNotificationKey, object: nil)
             
             print("\(currentObject)")
             
@@ -36,55 +36,84 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        self.parseClassName = "Answer"
-        self.textKey = "answer"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
     }
    
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
-            
         }
 
-    
-    func queryForAnswers() -> PFQuery {
-        let query = PFQuery(className:"Answer")
+    override func queryForTable() -> PFQuery {
+        let query = PFQuery(className: "Answer")
+        query.includeKey("questionID")
+        query.cachePolicy = .CacheThenNetwork
+        query.orderByDescending("vote")
+        return query
+        
+    }
+   
+        
+        
+        //attempts
+        //query.orderByDescending("createdAt")
         //query.whereKey("questionID", equalTo: currentObject!)
         //query.includeKey("answer")
-        query.whereKey("questionID", equalTo: "K9oj7B386B")
+        //query.includeKey("questionID")
         //query.selectKeys("answer") as! String
-        query.cachePolicy = .CacheThenNetwork
-        //query.orderByDescending("createdAt")
-        return query
-
-    }
     
 
+   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("answersCell", forIndexPath: indexPath) as! answersTableViewCell
         
-        cell.answersLabel.text = object?.objectForKey("answer") as? String
+        if let pfObject = object {
+            //cell.votesLabel?.text = pfObject["vote"] as? String
+            
+            var votes:Int? = pfObject["vote"] as? Int
+            if votes == nil {
+                votes = 0
+            }
+            cell.votesLabel?.text = "\(votes!) votes"
+        
+        
+        // this results in displaying the current question ID
+            //cell.answersLabel.text = currentObject?.objectId
+            
+            //this results in all answers
+            
+            if ((currentObject?.objectForKey("answer")) != nil) {
+                cell.answersLabel.text = object?.objectForKey("answer") as? String
+            } else {
+                cell.answersLabel.text = "No answers yet"
+            }
+        
+        
+        cell.objectID = object?.objectId
+
       
-        return cell
+        // this return nil/crash if let object = connectedAnswers {
+           // cell.answersLabel.text = (object["answer"] as! String)
+        //}
+        cell.parseObject = object
+        
+        
+    }
+       return cell 
     }
     
     
 /*
     this was attempt to use segmented controller to sort table view
-    
+
     @IBAction func sortAnswers(sender: UISegmentedControl) {
-        
         if controller.selectedSegmentIndex == 0 {
             print("Date Added")
         }
-        
         if controller.selectedSegmentIndex == 1 {
             print("votes")
         }
     }
-    
 */
     
     @IBAction func answerButton(sender: AnyObject) {
@@ -97,23 +126,23 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
             print("\(inputTextField?.text)")
             
             let newAnswer = PFObject(className:"Answer")
-            
             newAnswer["answer"] = inputTextField?.text
             newAnswer["userID"] = PFUser.currentUser()
             newAnswer["questionID"] = self.currentObject
-            
+            newAnswer["vote"] = 1 
             newAnswer.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    // The object has been saved.
+                    
                     print("Question saved")
                     //self.tableView.reloadData()
                     NSNotificationCenter.defaultCenter().postNotificationName(newPostFromUser, object: self)
                     
                 } else {
-                    // There was a problem, check error.description
                     print("something went wrong")
                 }
+                self.tableView.reloadData()
+                
             }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in }
@@ -138,14 +167,6 @@ class QuestionsandAnswerPFViewController: PFQueryTableViewController {
 
 
 
-        /*
-        // MARK: - Navigation
-        
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        }
-        */
+
         
 

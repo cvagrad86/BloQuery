@@ -15,6 +15,9 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var userSince: UILabel!
+    
     
     @IBAction func loadImageButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -38,13 +41,7 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func queryForTable(object: PFObject?) -> PFQuery {
-        let query = PFQuery(className: "User")
-        query.cachePolicy = .CacheElseNetwork
-                print("/(username)")
-        return query
-
-    }
+   
 
     
    
@@ -62,10 +59,12 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func saveProfile(sender: AnyObject) {
-        
+        /*
         if myImageView.image == nil {
             print("Image not uploaded")
         }else {
+            
+           //cant use this as it creates new User Class which is mayhem.
             
             let newUserPhoto = PFObject(className: "User")
             newUserPhoto["uploader"] = PFUser.currentUser()
@@ -94,9 +93,13 @@ class userProfileViewController: UIViewController, UIImagePickerControllerDelega
             })
 
         }
-        
+       */ 
     }
+
     
+    
+    @IBAction func userProfileList(sender: AnyObject) {
+    }
     
     /*
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -21,14 +21,15 @@ class QuestionsTableViewController: PFQueryTableViewController {
         let query = PFQuery(className: "Questions")
         query.includeKey("userEyeD")
         query.cachePolicy = .CacheThenNetwork
-        query.orderByDescending("createdAt")
-        //print("\(ObjectIdentifier)().self")
+        query.orderByAscending("createdAt")
         return query
         
     }
     
     func queryForUsers() -> PFQuery {
-        let query = PFQuery(className: "Users")
+        let query : PFQuery = PFUser.query()!
+        query.includeKey("username")
+        query.includeKey("email")
         query.cachePolicy = .CacheThenNetwork
         query.orderByDescending("createdAt")
         return query
@@ -36,9 +37,15 @@ class QuestionsTableViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("questionsCell", forIndexPath: indexPath) as! questionsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("questionsCell",
+            forIndexPath: indexPath) as! questionsTableViewCell
+        
+        
         cell.questionLabel.text = object?.objectForKey("question") as? String
-        cell.userdetailsLabel.text = PFUser.currentUser()!.username        
+        cell.userdetailsLabel.text = object?.objectForKey("username") as? String
+            //PFUser.currentUser()!.username
+        //cell.dateAdded.text = object?.objectForKey("createdAt") as? String
+        
         return cell
     }
     
@@ -46,22 +53,22 @@ class QuestionsTableViewController: PFQueryTableViewController {
         print("success")
     }
     
-    // Override to support editing the table view.
+   
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            
             let objectToDelete = (objects?[indexPath.row])! as PFObject
             objectToDelete.deleteInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
-                    // Force a reload of the table - fetching fresh data from Parse platform
+                    
                     self.loadObjects()
                 } else {
-                    // There was a problem, check error.description
+                    
                 }
             }
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }
     }
     
@@ -73,13 +80,12 @@ class QuestionsTableViewController: PFQueryTableViewController {
         if segue.identifier == "showQuestion" {
             
             let indexPath = tableView.indexPathForSelectedRow
-                //let row = Int(indexPath.row)
+            
                 controller.currentObject = self.objects![indexPath!.row]
+                //resulted in carsh = nil value
+            //controller.connectedAnswers = self.objects![indexPath!.row]
         }
-            //let questionAsked = [indexPath?.row] as! String
-            //controller.question = questionAsked
-            //let placeLat = places[indexPath!.row].latitude
-            //controller.placeSelected = placeSelected
+        
         }
     
 

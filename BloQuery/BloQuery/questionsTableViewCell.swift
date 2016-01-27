@@ -14,6 +14,6 @@ class questionsTableViewCell: PFTableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var userdetailsLabel: UILabel!
-    
+    @IBOutlet weak var dateAdded: UILabel!
 
 }
